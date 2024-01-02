@@ -1,0 +1,59 @@
+/* Main body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+}
+
+/* Styling for primary buttons */
+.primary-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Form elements styling */
+select, button {
+    margin: 5px 0;
+}
+
+/* Tooltip styling */
+.tooltip {
+    border: 1px solid #333;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1000;
+}
