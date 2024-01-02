@@ -1,54 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultant Profile</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
-  <link rel="stylesheet" href="styleManager.css"> <!-- Style Manager CSS -->
-</head>
-<body>
-  <header class="text-white p-4 primary-bg">
-    <h1 class="text-3xl">John Doe - Consultant</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultant Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+    <link rel="stylesheet" href="styleManager.css">
+  </head>
+  <body>
+    <header class="bg-blue-600 text-white p-4">
+      <h1 class="text-3xl">John Doe - Consultant</h1>
+      <!-- Add buttons for style changes here -->
+      <button id="light-mode">Light Mode</button>
+      <button id="dark-mode">Dark Mode</button>
+      <!-- Add dropdown for color schemes here -->
+      <select id="color-scheme-selector">
+        <option value="Cerulean Lime Crimson">Cerulean Lime Crimson</option>
+        <option value="Royal Emerald Crimson">Royal Emerald Crimson</option>
+        <option value="Midnight Olive Silver">Midnight Olive Silver</option>
+        <option value="Twitter Teal Light Grey">Twitter Teal Light Grey</option>
+      </select>
+      <!-- Add dropdown for fonts here -->
+      <select id="font-selector">
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <!-- Add more font options here -->
+      </select>
+    </header>
+    <!-- The rest of your HTML content -->
+    -  <section class="p-4">
+      <h2 class="text-2xl">About Me</h2>
+      <p class="secondary-color">I am a consultant with expertise in...</p>
+    </section>
 
-  <section class="p-4">
-    <h2 class="text-2xl">About Me</h2>
-    <p class="secondary-color">I am a consultant with expertise in...</p>
-  </section>
+    <section class="p-4">
+      <h2 class="text-2xl">Accomplishments</h2>
+      <ul class="accent-color">
+        <li>Leading a successful project...</li>
+        <!-- More accomplishments -->
+      </ul>
+    </section>
 
-  <section class="p-4">
-    <h2 class="text-2xl">Accomplishments</h2>
-    <ul class="accent-color">
-      <li>Leading a successful project...</li>
-      <!-- More accomplishments -->
-    </ul>
-  </section>
+    <section class="p-4">
+      <h2 class="text-2xl">Upcoming Events</h2>
+      <ul class="secondary-color">
+        <li>Keynote speech at...</li>
+        <!-- More events -->
+      </ul>
+    </section>
 
-  <section class="p-4">
-    <h2 class="text-2xl">Upcoming Events</h2>
-    <ul class="secondary-color">
-      <li>Keynote speech at...</li>
-      <!-- More events -->
-    </ul>
-  </section>
+    <section class="p-4">
+      <h2 class="text-2xl">Connect with Me</h2>
+      <div class="flex space-x-4">
+        <a href="https://twitter.com/" target="_blank" class="text-blue-500"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://www.linkedin.com/" target="_blank" class="text-blue-700"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.spotify.com/" target="_blank" class="text-green-600"><i class="fab fa-spotify"></i> Spotify</a>
+        <a href="https://www.apple.com/apple-music/" target="_blank" class="text-gray-800"><i class="fab fa-apple"></i> Apple Music</a>
+      </div>
+    </section>
 
-  <section class="p-4">
-    <h2 class="text-2xl">Connect with Me</h2>
-    <div class="flex space-x-4">
-      <a href="https://twitter.com/" target="_blank" class="text-blue-500"><i class="fab fa-twitter"></i> Twitter</a>
-      <a href="https://www.linkedin.com/" target="_blank" class="text-blue-700"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://www.spotify.com/" target="_blank" class="text-green-600"><i class="fab fa-spotify"></i> Spotify</a>
-      <a href="https://www.apple.com/apple-music/" target="_blank" class="text-gray-800"><i class="fab fa-apple"></i> Apple Music</a>
-    </div>
-  </section>
+    <footer class="text-white p-4 primary-bg">
+      <p>Contact me for collaborations and consultancy opportunities.</p>
+    </footer>
 
-  <footer class="text-white p-4 primary-bg">
-    <p>Contact me for collaborations and consultancy opportunities.</p>
-  </footer>
-
-  <!-- Style Manager Scripts -->
-  <script type="module" src="styleManager.js"></script>
-</body>
+    <script type="module" src="styleManager.js"></script>
+  </body>
 </html>

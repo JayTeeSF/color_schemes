@@ -36,7 +36,19 @@ class StyleManager {
       this.applyColorScheme('Midnight Olive Silver');
     }
   }
+      initUI() {
+        const lightModeButton = document.getElementById('light-mode');
+        const darkModeButton = document.getElementById('dark-mode');
+        const colorSchemeSelector = document.getElementById('color-scheme-selector');
+        const fontSelector = document.getElementById('font-selector');
+
+        lightModeButton.addEventListener('click', () => this.toggleMode('light'));
+        darkModeButton.addEventListener('click', () => this.toggleMode('dark'));
+        colorSchemeSelector.addEventListener('change', (e) => this.changeColorScheme(e.target.value));
+        fontSelector.addEventListener('change', (e) => this.changeFont(e.target.value));
+    }
 }
 
 const styleManager = new StyleManager();
+styleManager.initUI();
 export default styleManager;
