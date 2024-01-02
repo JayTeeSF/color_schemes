@@ -14,7 +14,14 @@ window.addEventListener("load", () => {
     // Add your font options here (e.g., "Roboto", "Open Sans", "FontAwesome1", etc.)
     "Roboto",
     "Open Sans",
-    "FontAwesome1",
+    "Playfair Display",
+    "Poppins",
+    "Nunito",
+    "Inter",
+    "Lora",
+    "FontAwesome Free Regular",
+    "FontAwesome Brands",
+    "FontAwesome Duotone"
   ];
   fontOptions.forEach(font => {
     const option = document.createElement("option");
