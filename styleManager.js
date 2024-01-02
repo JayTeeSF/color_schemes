@@ -2,16 +2,19 @@
 export default class StyleManager {
   constructor() {
     this.colorSchemes = {
-      'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134'],
-      'Royal Emerald Crimson': ['#4169E1', '#2ECC71', '#E74C3C'],
-      'Midnight Olive Silver': ['#2F4F4F', '#66A350', '#CCCCCC'],
-      'Twitter Teal Light Grey': ['#3498DB', '#38A3A5', '#F1F1F1']
+      'Ocean Wave': ['#00577B', '#A6D6D6', '#C1E7E3'],
+      'Sunset Boulevard': ['#FF5E5B', '#D8D8D8', '#FFFFEA'],
+      'Forest Hike': ['#5D4157', '#A8CABA', '#E6EBE0'],
+      'Desert Sand': ['#EDC9AF', '#F7E4BE', '#F4E9CD']
     };
     this.fonts = {
       'Arial': 'Arial, sans-serif',
-      'Verdana': 'Verdana, sans-serif'
-      // Add more fonts here
+      'Verdana': 'Verdana, sans-serif',
+      'Georgia': 'Georgia, serif',
+      'Palatino Linotype': '"Palatino Linotype", "Book Antiqua", Palatino, serif',
+      'Times New Roman': '"Times New Roman", Times, serif'
     };
+    this.currentMode = 'light'; // Default to light mode
   }
 
   applyFont(fontName) {
@@ -27,43 +30,47 @@ export default class StyleManager {
     }
   }
 
-  toggleDarkLightMode(isDark) {
-    // Add logic to toggle the dark/light mode here
-    // This could be as simple as toggling a class on the body element
-    if (isDark) {
-      document.body.classList.remove('dark-mode');
-      this.applyColorScheme('Cerulean Lime Crimson'); // Or any other default light color scheme
-    } else {
-      document.body.classList.add('dark-mode');
-      this.applyColorScheme('Midnight Olive Silver'); // Or any other default dark color scheme
-    }
+  toggleDarkLightMode() {
+    this.currentMode = this.currentMode === 'light' ? 'dark' : 'light';
+    document.body.classList.toggle('dark-mode', this.currentMode === 'dark');
   }
 
   initUI() {
     const fontSelector = document.getElementById('font-selector');
     const colorSchemeSelector = document.getElementById('color-scheme-selector');
+    const modeToggle = document.getElementById('mode-toggle');
 
-    if (fontSelector) {
-      fontSelector.addEventListener('change', (e) => {
-        this.applyFont(e.target.value);
-      });
-    }
+    fontSelector.innerHTML = this.createFontOptions();
+    colorSchemeSelector.innerHTML = this.createColorSchemeOptions();
 
-    if (colorSchemeSelector) {
-      colorSchemeSelector.addEventListener('change', (e) => {
-        this.applyColorScheme(e.target.value);
-      });
-    }
+    fontSelector.addEventListener('change', (e) => {
+      this.applyFont(e.target.value);
+    });
 
-    // Add other UI initialization if needed
+    colorSchemeSelector.addEventListener('change', (e) => {
+      this.applyColorScheme(e.target.value);
+    });
+
+    modeToggle.addEventListener('click', () => {
+      this.toggleDarkLightMode();
+    });
+  }
+
+  createFontOptions() {
+    return Object.keys(this.fonts).map(font => `<option value="${font}">${font}</option>`).join('');
+  }
+
+  createColorSchemeOptions() {
+    return Object.entries(this.colorSchemes).map(([name, colors]) => {
+      const colorIndicators = colors.map(color => `<span style="background-color:${color};">&nbsp;&nbsp;&nbsp;&nbsp;</span>`).join('');
+      return `<option value="${name}">${name} ${colorIndicators}</option>`;
+    }).join('');
   }
 }
 
-// Initialize the style manager and UI when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   const styleManager = new StyleManager();
   styleManager.initUI();
-  // Set default font and color scheme
   styleManager.applyFont('Arial');
-  styleManager.applyColorScheme('Cerulean Lime Crimson');
+  styleManager.applyColorScheme('Ocean Wave');
 });
