@@ -3,6 +3,39 @@ const fontDropdown = document.getElementById("font-dropdown");
 const colorSchemeDropdown = document.getElementById("color-scheme-dropdown");
 const clearCookiesButton = document.getElementById("clear-cookies");
 
+const renderButton = document.getElementById("render-button");
+renderButton.addEventListener("click", () => {
+  // Check for cookies and apply preferences or prompt the user
+});
+
+window.addEventListener("load", () => {
+  // Populate font dropdown
+  const fontOptions = [
+    // Add your font options here (e.g., "Roboto", "Open Sans", "FontAwesome1", etc.)
+    "Roboto",
+    "Open Sans",
+    "FontAwesome1",
+  ];
+  fontOptions.forEach(font => {
+    const option = document.createElement("option");
+    option.value = font;
+    option.text = font;
+    fontDropdown.appendChild(option);
+  });
+
+  // Populate color scheme dropdown
+  const colorSchemeOptions = ["light", "dark", "random"];
+  colorSchemeOptions.forEach(colorScheme => {
+    const option = document.createElement("option");
+    option.value = colorScheme;
+    option.text = colorScheme;
+    colorSchemeDropdown.appendChild(option);
+  });
+
+  // Check for cookies and apply preferences or prompt the user
+  checkCookies();
+});
+
 // Array to store text elements
 const textElements = [];
 

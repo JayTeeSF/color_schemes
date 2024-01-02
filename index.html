@@ -3,34 +3,33 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Business Website</title>
+
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
   </head>
   <body>
     <header>
       <h1 class="logo">My Company</h1>
-      <select id="font-dropdown">
-        <option value="FontAwesome1">Font Awesome 1</option>
-        <option value="GoogleFont1">Google Font 1</option>
-      </select>
-
-      <select id="color-scheme-dropdown">
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-        <option value="random">I don't know</option>
-      </select>
-
-      <button id="clear-cookies">Clear Preferences</button>
-
+      <button class="theme-toggle">
+        <i class="fas fa-sun"></i> Light Mode
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
     </header>
     <main>
-      <p>This is an example paragraph using the primary color (#007bff) for text.</p>
+      <p>This is an example paragraph.</p>
       <button class="primary-button">Call to Action</button>
     </main>
     <footer>
-      <p>&copy; 2024 My Company</p>
+      <select id="font-dropdown">
+      </select>
+      <select id="color-scheme-dropdown">
+      </select>
+      <button id="clear-cookies">Clear Preferences</button>
+      <button id="render-button">Render Page</button>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
