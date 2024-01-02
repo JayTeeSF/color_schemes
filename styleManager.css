@@ -1,0 +1,104 @@
+/* styleManager.css */
+:root {
+    /* Default color scheme */
+    --primary-color: #007bff; /* Cerulean Blue */
+    --secondary-color: #A2C95C; /* Lime Green */
+    --accent-color: #F05134; /* Red Orange */
+
+    /* Light mode colors */
+    --light-primary-bg: #FFFFFF; /* White */
+    --light-secondary-bg: #F0F0F0; /* Very light gray */
+    --light-accent-bg: #007bff; /* Cerulean Blue */
+
+    /* Dark mode colors */
+    --dark-primary-bg: #2F4F4F; /* Midnight Blue */
+    --dark-secondary-bg: #66A350; /* Dark Olive Green */
+    --dark-accent-bg: #CCCCCC; /* Silver */
+
+    /* Font families */
+    --font-primary: Arial, sans-serif;
+    --font-secondary: 'Times New Roman', serif;
+    --font-accent: 'Courier New', monospace;
+
+    /* Font sizes */
+    --font-size-primary: 16px;
+    --font-size-secondary: 14px;
+    --font-size-accent: 12px;
+
+    /* Other styling options */
+    --border-radius: 4px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Elements that will use the primary color scheme */
+.primary-color {
+    color: var(--primary-color);
+}
+
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.accent-color {
+    color: var(--accent-color);
+}
+
+/* Background color classes for light and dark mode */
+.light-primary-bg {
+    background-color: var(--light-primary-bg);
+}
+
+.light-secondary-bg {
+    background-color: var(--light-secondary-bg);
+}
+
+.light-accent-bg {
+    background-color: var(--light-accent-bg);
+}
+
+.dark-primary-bg {
+    background-color: var(--dark-primary-bg);
+}
+
+.dark-secondary-bg {
+    background-color: var(--dark-secondary-bg);
+}
+
+.dark-accent-bg {
+    background-color: var(--dark-accent-bg);
+}
+
+/* Font family classes */
+.font-primary {
+    font-family: var(--font-primary);
+}
+
+.font-secondary {
+    font-family: var(--font-secondary);
+}
+
+.font-accent {
+    font-family: var(--font-accent);
+}
+
+/* Font size classes */
+.font-size-primary {
+    font-size: var(--font-size-primary);
+}
+
+.font-size-secondary {
+    font-size: var(--font-size-secondary);
+}
+
+.font-size-accent {
+    font-size: var(--font-size-accent);
+}
+
+/* Utility classes for border radius and box shadow */
+.border-radius {
+    border-radius: var(--border-radius);
+}
+
+.box-shadow {
+    box-shadow: var(--box-shadow);
+}

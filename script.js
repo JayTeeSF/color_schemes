@@ -1,12 +1,14 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure the fontDropdown and colorSchemeDropdown are defined within this scope
     const fontDropdown = document.getElementById("font-dropdown");
     const colorSchemeDropdown = document.getElementById("color-scheme-dropdown");
     const clearCookiesButton = document.getElementById("clear-cookies");
     const renderButton = document.getElementById("render-button");
 
-    populateFontDropdown();
-    populateColorSchemeDropdown();
+    // Populate the dropdowns
+    populateFontDropdown(fontDropdown);
+    populateColorSchemeDropdown(colorSchemeDropdown);
 
     renderButton.addEventListener("click", () => {
         const selectedFont = fontDropdown.value;
@@ -17,15 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     clearCookiesButton.addEventListener("click", clearCookies);
 });
 
-function populateFontDropdown() {
+function populateFontDropdown(dropdown) {
     const fonts = ["Arial", "Verdana", "Helvetica", "Tahoma", "Trebuchet MS", "Times New Roman", "Georgia", "Garamond", "Courier New", "Brush Script MT"];
     fonts.forEach(font => {
         let option = new Option(font, font);
-        fontDropdown.add(option);
+        dropdown.add(option);
     });
 }
 
-function populateColorSchemeDropdown() {
+function populateColorSchemeDropdown(dropdown) {
     const colorSchemes = {
         'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134'],
         'Royal Emerald Crimson': ['#4169E1', '#2ECC71', '#E74C3C'],
@@ -35,7 +37,7 @@ function populateColorSchemeDropdown() {
 
     Object.keys(colorSchemes).forEach(scheme => {
         let option = new Option(scheme, scheme);
-        colorSchemeDropdown.add(option);
+        dropdown.add(option);
     });
 }
 
@@ -62,6 +64,9 @@ function applyColorScheme(scheme) {
 }
 
 function clearCookies() {
-    // Implement cookie deletion logic here
-    console.log("Cookies cleared. Implement deletion logic.");
+    // Delete the cookies related to font and color scheme preferences
+    document.cookie = "font=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "colorScheme=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Reload the page to apply default preferences
+    window.location.reload();
 }
