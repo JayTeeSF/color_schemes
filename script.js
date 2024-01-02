@@ -2,166 +2,118 @@
 const fontDropdown = document.getElementById("font-dropdown");
 const colorSchemeDropdown = document.getElementById("color-scheme-dropdown");
 const clearCookiesButton = document.getElementById("clear-cookies");
-
 const renderButton = document.getElementById("render-button");
-renderButton.addEventListener("click", () => {
-  // Check for cookies and apply preferences or prompt the user
-});
-
-window.addEventListener("load", () => {
-  // Populate font dropdown
-  const fontOptions = [
-    // Add your font options here (e.g., "Roboto", "Open Sans", "FontAwesome1", etc.)
-    "Roboto",
-    "Open Sans",
-    "Playfair Display",
-    "Poppins",
-    "Nunito",
-    "Inter",
-    "Lora",
-    "FontAwesome Free Regular",
-    "FontAwesome Brands",
-    "FontAwesome Duotone"
-  ];
-  fontOptions.forEach(font => {
-    const option = document.createElement("option");
-    option.value = font;
-    option.text = font;
-    fontDropdown.appendChild(option);
-  });
-
-  // Populate color scheme dropdown
-  const colorSchemeOptions = ["light", "dark", "random"];
-  colorSchemeOptions.forEach(colorScheme => {
-    const option = document.createElement("option");
-    option.value = colorScheme;
-    option.text = colorScheme;
-    colorSchemeDropdown.appendChild(option);
-  });
-
-  // Check for cookies and apply preferences or prompt the user
-  checkCookies();
-});
 
 // Array to store text elements
-const textElements = [];
+let textElements = [];
 
-// Function to extract text elements
+window.addEventListener("load", initializePage);
+
+function initializePage() {
+    extractTextElements();
+    populateFontDropdown();
+    populateColorSchemeDropdown();
+    applyPreferencesFromCookies();
+    attachEventListeners();
+}
+
 function extractTextElements() {
-  const textElements = document.querySelectorAll("p, h1, h2, h3, span");
-  textElements.forEach(element => {
-    // Store text content and element reference in the array
-    this.textElements.push({
-      content: element.textContent,
-      element: element
+    textElements = Array.from(document.querySelectorAll("h1, h2, h3, p, span, .logo"));
+}
+
+
+function populateFontDropdown() {
+    const fonts = [
+        "Roboto", "Open Sans", "Playfair Display", "Poppins", "Nunito",
+        "FontAwesome Free Regular", "FontAwesome Brands", "FontAwesome Duotone"
+    ];
+    populateDropdown(fontDropdown, fonts);
+}
+
+function populateColorSchemeDropdown() {
+    const colorSchemes = ["light", "dark", "random"];
+    populateDropdown(colorSchemeDropdown, colorSchemes);
+}
+
+function populateDropdown(dropdown, options) {
+    options.forEach(option => {
+        const optElement = document.createElement("option");
+        optElement.value = option;
+        optElement.textContent = option;
+        dropdown.appendChild(optElement);
     });
-  });
 }
 
-// Function to check cookies
-function checkCookies() {
-  const fontCookie = getCookie("font");
-  const colorSchemeCookie = getCookie("colorScheme");
-
-  if (fontCookie && colorSchemeCookie) {
-    applyPreferences(fontCookie, colorSchemeCookie);
-  } else {
-    promptUserSelection();
-  }
-}
-
-// Function to prompt user for selections
-function promptUserSelection() {
-  // Display prompts using browser prompts or a custom modal
-  const selectedFont = prompt("Choose a font:", fontDropdown.value);
-  const selectedColorScheme = prompt("Choose a color scheme (light, dark, or random):", colorSchemeDropdown.value);
-
-  if (selectedFont && selectedColorScheme) {
-    applyPreferences(selectedFont, selectedColorScheme);
-  } else {
-    // Handle cases where user cancels prompts
-  }
-}
-
-// Function to apply preferences
-function applyPreferences(font, colorScheme) {
-  // Set font and color scheme for text elements
-  textElements.forEach(element => {
-    element.element.style.fontFamily = font;
-    element.element.style.color = getColor(colorScheme);
-  });
-
-  // Set cookies for preferences
-  setCookie("font", font, 30);
-  setCookie("colorScheme", colorScheme, 30);
-}
-
-// Function to get color based on color scheme
-function getColor(colorScheme) {
-  if (colorScheme === "light") {
-    return "#007bff"; // Example light color
-  } else if (colorScheme === "dark") {
-    return "#2f4f4f"; // Example dark color
-  } else {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16); // Random color
-  }
-}
-
-// Function to handle clear cookies button
-clearCookiesButton.addEventListener("click", () => {
-  deleteCookie("font");
-  deleteCookie("colorScheme");
-  location.reload();
-});
-
-// Function to handle hover events
-function handleHover(element) {
-  const tooltip = createTooltip(`Font: ${element.element.style.fontFamily}\nColor: ${element.element.style.color}`);
-  element.element.appendChild(tooltip);
-}
-
-// Function to create tooltip
-function createTooltip(content) {
-  const tooltip = document.createElement("div");
-  tooltip.classList.add("tooltip");
-  tooltip.textContent = content;
-  return tooltip;
-}
-
-// Initialize
-extractTextElements();
-checkCookies();
-
-// Add hover event listeners to text elements
-textElements.forEach(element => {
-  element.element.addEventListener("mouseover", () => handleHover(element));
-  element.element.addEventListener("mouseout", () => {
-    element.element.querySelector(".tooltip").remove();
-  });
-});
-
-JavaScript
 function getCookie(name) {
-  let nameEQ = name + "=";
-  let ca = document.cookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
 }
 
 function setCookie(name, value, days) {
-  let expires = "";
-  if (days) {
-    let date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 function deleteCookie(name) {
-  setCookie(name, "", -1);
+    setCookie(name, "", -1);
+}
+
+function applyPreferencesFromCookies() {
+    const fontCookie = getCookie("font");
+    const colorSchemeCookie = getCookie("colorScheme");
+
+    if (fontCookie && colorSchemeCookie) {
+        applyPreferences(fontCookie, colorSchemeCookie);
+    }
+}
+
+function applyPreferences(font, colorScheme) {
+    textElements.forEach(element => {
+        element.style.fontFamily = font;
+        document.body.style.backgroundColor = getBackgroundColor(colorScheme);
+    });
+    setCookie("font", font, 30);
+    setCookie("colorScheme", colorScheme, 30);
+}
+
+function getBackgroundColor(scheme) {
+    return scheme === "light" ? "#FFFFFF" : "#000000"; // Example colors for light and dark
+}
+
+function attachEventListeners() {
+    clearCookiesButton.addEventListener("click", handleClearCookies);
+    renderButton.addEventListener("click", handleRenderClick);
+}
+
+function handleClearCookies() {
+    deleteCookie("font");
+    deleteCookie("colorScheme");
+    window.location.reload();
+}
+
+function handleRenderClick() {
+    const selectedFont = fontDropdown.value;
+    const selectedColorScheme = colorSchemeDropdown.value;
+    applyPreferences(selectedFont, selectedColorScheme);
+}
+
+function getColorBasedOnScheme(scheme) {
+    if (scheme === "light") {
+        return "#007bff"; // Example light color
+    } else if (scheme === "dark") {
+        return "#2f4f4f"; // Example dark color
+    } else {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16); // Random color
+    }
 }

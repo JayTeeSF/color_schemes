@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Business Website</title>
+  <!-- Google Fonts and Font Awesome CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto|Open+Sans|Playfair+Display|Poppins|Nunito&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1 class="logo">My Company</h1>
+  </header>
+  <main>
+    <p>This is an example paragraph.</p>
+    <button class="primary-button">Call to Action</button>
+  </main>
+  <footer>
+    <label for="font-dropdown">Choose Font: </label>
+    <select id="font-dropdown" aria-label="Select font"></select>
 
-    <title>My Business Website</title>
+    <label for="color-scheme-dropdown">Color Scheme: </label>
+    <select id="color-scheme-dropdown" aria-label="Select color scheme"></select>
 
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1 class="logo">My Company</h1>
-      <button class="theme-toggle">
-        <i class="fas fa-sun"></i> Light Mode
-        <i class="fas fa-moon"></i> Dark Mode
-      </button>
-    </header>
-    <main>
-      <p>This is an example paragraph.</p>
-      <button class="primary-button">Call to Action</button>
-    </main>
-    <footer>
-      <select id="font-dropdown">
-      </select>
-      <select id="color-scheme-dropdown">
-      </select>
-      <button id="clear-cookies">Clear Preferences</button>
-      <button id="render-button">Render Page</button>
-    </footer>
-  </body>
+    <button id="clear-cookies">Clear Preferences</button>
+    <button id="render-button">Render Page</button>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
