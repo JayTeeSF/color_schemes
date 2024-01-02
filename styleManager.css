@@ -4,6 +4,8 @@
     --primary-color: #007bff; /* Cerulean Blue */
     --secondary-color: #A2C95C; /* Lime Green */
     --accent-color: #F05134; /* Red Orange */
+    --background-color: #ffffff; /* Default background color */
+    --text-color: #000000; /* Default text color */
 
     /* Light mode colors */
     --light-primary-bg: #FFFFFF; /* White */
@@ -101,4 +103,9 @@
 
 .box-shadow {
     box-shadow: var(--box-shadow);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }

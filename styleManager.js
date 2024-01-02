@@ -48,6 +48,15 @@ class StyleManager {
     }).join('');
   }
 
+  createColorSchemeOptions() {
+    return Object.entries(this.colorSchemes).map(([name, colors]) => {
+      // Create color indicators with inline styling for size and display
+      const colorIndicators = colors.map(color => `<span style="background-color:${color}; width: 15px; height: 15px; display: inline-block; margin-left: 2px;"></span>`).join('');
+      // Apply background and text color to the option itself, assuming colors[3] is bg and colors[5] is text color
+      return `<option value="${name}" style="background-color:${colors[3]}; color:${colors[5]};">${name} <div style="display:inline-block; vertical-align:middle;">${colorIndicators}</div></option>`;
+    }).join('');
+  }
+
   initUI() {
         const fontSelector = document.getElementById('font-selector');
     const colorSchemeSelector = document.getElementById('color-scheme-selector');
