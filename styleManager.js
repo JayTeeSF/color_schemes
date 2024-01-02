@@ -1,5 +1,5 @@
 // styleManager.js
-export default class StyleManager {
+class StyleManager {
   constructor() {
     this.colorSchemes = {
       'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134'],
@@ -18,7 +18,7 @@ export default class StyleManager {
       'Palatino Linotype': '"Palatino Linotype", "Book Antiqua", Palatino, serif',
       'Times New Roman': '"Times New Roman", Times, serif'
     };
-    this.currentMode = 'light'; // Default to light mode
+    // this.currentMode = 'light'; // Default to light mode
   }
 
   applyFont(fontName) {
@@ -35,46 +35,50 @@ export default class StyleManager {
   }
 
   toggleDarkLightMode() {
-    this.currentMode = this.currentMode === 'light' ? 'dark' : 'light';
-    document.body.classList.toggle('dark-mode', this.currentMode === 'dark');
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    // Update the colors based on the new mode
+    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
+    this.applyColorScheme(mode === 'dark' ? 'Midnight Olive Silver' : 'Cerulean Lime Crimson');
+  }
+
+  createDropdownOptions(items, formatter) {
+    return Object.entries(items).map(([key, value]) => {
+      return formatter(key, value);
+    }).join('');
   }
 
   initUI() {
-    const fontSelector = document.getElementById('font-selector');
+        const fontSelector = document.getElementById('font-selector');
     const colorSchemeSelector = document.getElementById('color-scheme-selector');
     const modeToggle = document.getElementById('mode-toggle');
 
-    fontSelector.innerHTML = this.createFontOptions();
-    colorSchemeSelector.innerHTML = this.createColorSchemeOptions();
+    if (fontSelector) {
+      fontSelector.innerHTML = this.createDropdownOptions(this.fonts, (fontName, _) => {
+        return `<option value="${fontName}">${fontName}</option>`;
+      });
+      fontSelector.addEventListener('change', (e) => this.applyFont(e.target.value));
+    }
 
-    fontSelector.addEventListener('change', (e) => {
-      this.applyFont(e.target.value);
-    });
+    if (colorSchemeSelector) {
+      colorSchemeSelector.innerHTML = this.createDropdownOptions(this.colorSchemes, (schemeName, colors) => {
+        const colorIndicators = colors.map(color => `<span style="background-color:${color}; width: 1em; height: 1em; display: inline-block;"></span>`).join(' ');
+        return `<option value="${schemeName}">${schemeName} ${colorIndicators}</option>`;
+      });
+      colorSchemeSelector.addEventListener('change', (e) => this.applyColorScheme(e.target.value));
+    }
 
-    colorSchemeSelector.addEventListener('change', (e) => {
-      this.applyColorScheme(e.target.value);
-    });
-
-    modeToggle.addEventListener('click', () => {
-      this.toggleDarkLightMode();
-    });
-  }
-
-  createFontOptions() {
-    return Object.keys(this.fonts).map(font => `<option value="${font}">${font}</option>`).join('');
-  }
-
-  createColorSchemeOptions() {
-    return Object.entries(this.colorSchemes).map(([name, colors]) => {
-      const colorIndicators = colors.map(color => `<span style="background-color:${color};">&nbsp;&nbsp;&nbsp;&nbsp;</span>`).join('');
-      return `<option value="${name}">${name} ${colorIndicators}</option>`;
-    }).join('');
+    if (modeToggle) {
+      modeToggle.addEventListener('click', () => this.toggleDarkLightMode());
+    }
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const styleManager = new StyleManager();
   styleManager.initUI();
-  styleManager.applyFont('Arial');
-  styleManager.applyColorScheme('Ocean Wave');
+  // styleManager.applyFont('Arial');
+  // styleManager.applyColorScheme('Ocean Wave');
 });
+
+export default new StyleManager();
