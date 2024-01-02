@@ -2,6 +2,10 @@
 export default class StyleManager {
   constructor() {
     this.colorSchemes = {
+      'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134'],
+      'Royal Emerald Crimson': ['#4169E1', '#2ECC71', '#E74C3C'],
+      'Midnight Olive Silver': ['#2F4F4F', '#66A350', '#CCCCCC'],
+      'Twitter Teal Light Grey': ['#3498DB', '#38A3A5', '#F1F1F1'],
       'Ocean Wave': ['#00577B', '#A6D6D6', '#C1E7E3'],
       'Sunset Boulevard': ['#FF5E5B', '#D8D8D8', '#FFFFEA'],
       'Forest Hike': ['#5D4157', '#A8CABA', '#E6EBE0'],
