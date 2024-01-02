@@ -1,5 +1,5 @@
 // styleManager.js
-class StyleManager {
+export default class StyleManager {
   constructor() {
     this.colorSchemes = {
       'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134'],
@@ -7,15 +7,20 @@ class StyleManager {
       'Midnight Olive Silver': ['#2F4F4F', '#66A350', '#CCCCCC'],
       'Twitter Teal Light Grey': ['#3498DB', '#38A3A5', '#F1F1F1']
     };
+    this.fonts = {
+      'Arial': 'Arial, sans-serif',
+      'Verdana': 'Verdana, sans-serif'
+      // Add more fonts here
+    };
   }
 
   applyFont(fontName) {
-    document.body.style.fontFamily = fontName;
+    document.body.style.fontFamily = this.fonts[fontName];
   }
 
   applyColorScheme(schemeName) {
-    let colors = this.colorSchemes[schemeName];
-    if(colors) {
+    const colors = this.colorSchemes[schemeName];
+    if (colors) {
       document.documentElement.style.setProperty('--primary-color', colors[0]);
       document.documentElement.style.setProperty('--secondary-color', colors[1]);
       document.documentElement.style.setProperty('--accent-color', colors[2]);
@@ -23,32 +28,42 @@ class StyleManager {
   }
 
   toggleDarkLightMode(isDark) {
-    const body = document.body;
-    const darkModeClass = 'dark-mode';
-
+    // Add logic to toggle the dark/light mode here
+    // This could be as simple as toggling a class on the body element
     if (isDark) {
-      body.classList.remove(darkModeClass);
-      // Apply light color scheme
-      this.applyColorScheme('Cerulean Lime Crimson');
+      document.body.classList.remove('dark-mode');
+      this.applyColorScheme('Cerulean Lime Crimson'); // Or any other default light color scheme
     } else {
-      body.classList.add(darkModeClass);
-      // Apply dark color scheme
-      this.applyColorScheme('Midnight Olive Silver');
+      document.body.classList.add('dark-mode');
+      this.applyColorScheme('Midnight Olive Silver'); // Or any other default dark color scheme
     }
   }
-      initUI() {
-        const lightModeButton = document.getElementById('light-mode');
-        const darkModeButton = document.getElementById('dark-mode');
-        const colorSchemeSelector = document.getElementById('color-scheme-selector');
-        const fontSelector = document.getElementById('font-selector');
 
-        lightModeButton.addEventListener('click', () => this.toggleMode('light'));
-        darkModeButton.addEventListener('click', () => this.toggleMode('dark'));
-        colorSchemeSelector.addEventListener('change', (e) => this.changeColorScheme(e.target.value));
-        fontSelector.addEventListener('change', (e) => this.changeFont(e.target.value));
+  initUI() {
+    const fontSelector = document.getElementById('font-selector');
+    const colorSchemeSelector = document.getElementById('color-scheme-selector');
+
+    if (fontSelector) {
+      fontSelector.addEventListener('change', (e) => {
+        this.applyFont(e.target.value);
+      });
     }
+
+    if (colorSchemeSelector) {
+      colorSchemeSelector.addEventListener('change', (e) => {
+        this.applyColorScheme(e.target.value);
+      });
+    }
+
+    // Add other UI initialization if needed
+  }
 }
 
-const styleManager = new StyleManager();
-styleManager.initUI();
-export default styleManager;
+// Initialize the style manager and UI when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const styleManager = new StyleManager();
+  styleManager.initUI();
+  // Set default font and color scheme
+  styleManager.applyFont('Arial');
+  styleManager.applyColorScheme('Cerulean Lime Crimson');
+});
