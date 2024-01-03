@@ -32,6 +32,34 @@
     --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Light/Dark mode backgrounds */
+body.dark-mode {
+  background-color: var(--dark-background-color);
+  color: var(--dark-text-color);
+}
+
+body:not(.dark-mode) {
+  background-color: var(--light-background-color);
+  color: var(--light-text-color);
+}
+
+/* Typography rules for long-form text and headers */
+p {
+  font-family: var(--font-secondary), sans-serif; /* Typically serif fonts are used for long-form text */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary), sans-serif; /* Sans-serif fonts are often used for headers */
+}
+
+/* Styles for dropdown options with color indicators */
+.option-color-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 2px;
+}
+
 /* Elements that will use the primary color scheme */
 .primary-color {
     color: var(--primary-color);
