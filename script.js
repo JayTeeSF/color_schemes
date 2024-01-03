@@ -37,6 +37,17 @@ function clearCookiesAndResetText() {
   window.location.reload();
 }
 
+// Making the clearCookiesAndResetText globally accessible
+window.clearCookiesAndResetText = clearCookiesAndResetText;
+
+// Define toggleStyleManagerUI function
+window.toggleStyleManagerUI = function(show) {
+  const styleManager = document.getElementById('style-manager-ui');
+  if (styleManager) {
+    styleManager.style.display = show ? 'block' : 'none';
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   // Populate the text content from cookies or use default
   Object.keys(profileTextElements).forEach(key => {

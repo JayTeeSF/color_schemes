@@ -34,15 +34,23 @@ class StyleManager {
     document.documentElement.style.setProperty('--accent-color', colors[2]);
     document.documentElement.style.setProperty('--background-color', colors[3]);
     document.documentElement.style.setProperty('--text-color', colors[5]);
+    document.documentElement.style.setProperty('--primary-text-color', colors[0]); // Assuming first color is what you want for text.
   }
 
   // Inside StyleManager class
 
   toggleDarkLightMode() {
     const body = document.body;
-    const isDarkMode = body.classList.toggle('dark-mode');
-    const scheme = isDarkMode ? 'dark' : 'light';
-    this.applyColorScheme(this.currentScheme); // assuming this.currentScheme holds the current color scheme name
+    body.classList.toggle('dark-mode');
+    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
+
+    // Set the appropriate background color based on the mode
+    const backgroundColor = mode === 'dark' ? this.colorSchemes[this.currentScheme][4] : this.colorSchemes[this.currentScheme][3];
+    document.documentElement.style.setProperty('--background-color', backgroundColor);
+
+    // Update the text color for the mode
+    const textColor = mode === 'dark' ? this.colorSchemes[this.currentScheme][6] : this.colorSchemes[this.currentScheme][5];
+    document.documentElement.style.setProperty('--text-color', textColor);
   }
 
   createDropdownOptions(items, formatter) {
@@ -52,12 +60,11 @@ class StyleManager {
   }
 
   createColorSchemeOptions() {
-    return this.createDropdownOptions(this.colorSchemes, (schemeName, colors) => {
-      const colorIndicators = colors.slice(0, 3).map(color => {
-        return `<span class="color-indicator" style="background-color:${color};"></span>`;
-      }).join('');
+    return Object.entries(this.colorSchemes).map(([schemeName, colors]) => {
+      // Create color indicators with inline styling for size and display
+      const colorIndicators = colors.slice(0, 3).map(color => `<span style="background-color:${color}; width: 20px; height: 20px; display: inline-block; margin: 0 5px;"></span>`).join('');
       return `<option value="${schemeName}">${schemeName} ${colorIndicators}</option>`;
-    });
+    }).join('');
   }
 
   initUI() {

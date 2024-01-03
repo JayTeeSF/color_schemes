@@ -10,11 +10,32 @@
   --text-color: #000000; /* Default text color */
 }
 
+body {
+  /* Use CSS custom properties for colors to allow easy changes */
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* When dark mode is active */
+body.dark-mode {
+  --background-color: var(--dark-primary-bg); /* e.g., a dark color */
+  --text-color: var(--dark-text-color); /* e.g., white or light color */
+}
+
+/* When light mode is active */
+body:not(.dark-mode) {
+  --background-color: var(--light-primary-bg); /* e.g., a light color */
+  --text-color: var(--light-text-color); /* e.g., black or dark color */
+}
+
+/* Additional styles for elements that change with the color scheme */
+.primary-bg { background-color: var(--primary-bg); }
+
 /* Dynamic style classes that will be applied by the Style Manager */
 .primary-bg { background-color: var(--primary-color); }
 .secondary-bg { background-color: var(--secondary-color); }
 .accent-bg { background-color: var(--accent-color); }
-.primary-text { color: var(--primary-color); }
+.primary-text { color: var(--primary-text-color); }
 .secondary-text { color: var(--secondary-color); }
 .accent-text { color: var(--accent-color); }
 
