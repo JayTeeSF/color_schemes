@@ -21,12 +21,20 @@ class StyleManager {
       'Times New Roman': '"Times New Roman", Times, serif'
     };
 
+    // Automatically bind methods
+    this.initUI = this.initUI.bind(this);
+    this.applyFont = this.applyFont.bind(this);
+    this.applyColorScheme = this.applyColorScheme.bind(this);
+    this.toggleDarkLightMode = this.toggleDarkLightMode.bind(this);
+
     this.currentScheme = 'Cerulean Lime Crimson';
     this.currentFont = 'Verdana';
-        // These will hold references to the DOM elements
-    this.fontDropdown = null;
-    this.colorSchemeDropdown = null;
-    this.modeToggle = null;
+  }
+
+  applyFont(fontName) {
+    this.currentFont = fontName;
+    // Apply the selected font to the body
+    document.body.style.fontFamily = this.fonts[fontName];
   }
 
   applyColorScheme(schemeName) {
@@ -40,56 +48,47 @@ class StyleManager {
     document.documentElement.style.setProperty('--text-color', colors[5]);
   }
 
-  applyFont(fontName) {
-    this.currentFont = fontName;
-    document.body.style.fontFamily = this.fonts[fontName];
-  }
-
   toggleDarkLightMode() {
-    document.body.classList.toggle('dark-mode');
-    const modeColors = document.body.classList.contains('dark-mode') ? this.colorSchemes['Midnight Olive Silver'] : this.colorSchemes[this.currentScheme];
+    // Toggle the dark/light mode of the page
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+
+    const modeColors = isDarkMode ? this.colorSchemes['Midnight Olive Silver'] : this.colorSchemes[this.currentScheme];
     this.applyColorScheme(this.currentScheme);
     document.body.style.backgroundColor = modeColors[3];
     document.body.style.color = modeColors[5];
   }
+
   initUI() {
-    // Assign DOM elements to class properties
-    this.fontDropdown = document.getElementById('font-dropdown');
-    this.colorSchemeDropdown = document.getElementById('color-scheme-dropdown');
-    this.modeToggle = document.getElementById('mode-toggle');
+    const fontDropdown = document.getElementById('font-dropdown');
+    Object.keys(this.fonts).forEach(font => {
+      const option = document.createElement('option');
+      option.value = font;
+      option.textContent = font;
+      fontDropdown.appendChild(option);
+    });
+    fontDropdown.addEventListener('change', (e) => {
+      this.applyFont(e.target.value);
+    });
 
-    // Populate font dropdown
-    if (this.fontDropdown) {
-      for (const font in this.fonts) {
-        const option = document.createElement('option');
-        option.value = font;
-        option.textContent = font;
-        this.fontDropdown.appendChild(option);
-      }
-      this.fontDropdown.value = this.currentFont;
-      this.fontDropdown.addEventListener('change', (e) => {
-        this.applyFont(e.target.value);
-      });
-    }
+    const modeToggle = document.getElementById('mode-toggle');
+    Object.keys(this.colorSchemes).forEach(scheme => {
+      const option = document.createElement('option');
+      option.value = scheme;
+      option.textContent = scheme;
+      colorSchemeDropdown.appendChild(option);
+    });
+    colorSchemeDropdown.addEventListener('change', (e) => {
+      this.applyColorScheme(e.target.value);
+    });
 
-    // Populate color scheme dropdown
-    if (this.colorSchemeDropdown) {
-      for (const scheme in this.colorSchemes) {
-        const option = document.createElement('option');
-        option.value = scheme;
-        option.textContent = scheme;
-        this.colorSchemeDropdown.appendChild(option);
-      }
-      this.colorSchemeDropdown.value = this.currentScheme;
-      this.colorSchemeDropdown.addEventListener('change', (e) => {
-        this.applyColorScheme(e.target.value);
-      });
-    }
+    // Set up the toggle button for dark/light mode
+    modeToggle.addEventListener('click', this.toggleDarkLightMode);
 
-    // Setup mode toggle button
-    if (this.modeToggle) {
-      this.modeToggle.addEventListener('click', this.toggleDarkLightMode);
-    }
+    // Apply the initial font and color scheme
+    this.applyFont(this.currentFont);
+    this.applyColorScheme(this.currentScheme);
   }
 }
 
@@ -98,6 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
   styleManager.initUI();
   //styleManager.applyColorScheme(styleManager.currentScheme);
   //styleManager.applyFont(styleManager.currentFont);
-  styleManager.applyColorScheme('Cerulean Lime Crimson'); // Default color scheme
-  styleManager.applyFont('Verdana'); // Default font
+  //styleManager.applyColorScheme('Cerulean Lime Crimson'); // Default color scheme
+  //styleManager.applyFont('Verdana'); // Default font
 });
