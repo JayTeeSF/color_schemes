@@ -30,10 +30,42 @@
     /* Other styling options */
     --border-radius: 4px;
     --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* Pairing Verdana with a complementary serif font, such as Georgia */
+    --font-body: Georgia, serif;
+    --font-heading: Verdana, sans-serif;
+}
+
+/* Applying the font pairings */
+body, p, li {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Styles for the color scheme dropdown visual indicators */
+.color-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  vertical-align: middle;
+  border: 1px solid #000; /* In case the color is white or very light */
+}
+
+/* Styles for making the StyleManager UI hideable */
+#style-manager-ui {
+  display: none; /* Hidden by default */
+}
+
+/* Reveal the UI if the query string 'showUI=true' is present */
+body.show-style-manager-ui #style-manager-ui {
+  display: block;
 }
 
 body {
-    font-family: var(--font-primary);
     background-color: var(--light-primary-bg);
     color: var(--light-text-color);
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for color and background */
@@ -71,13 +103,4 @@ body.dark-mode {
     height: 1em;
     margin-left: 2px;
     border: 1px solid #000; /* Ensure indicators are visible on all backgrounds */
-}
-
-/* Specific typography rules */
-p, li {
-    font-family: var(--font-secondary); /* Serif font for long-form text */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary); /* Sans-serif font for headings */
 }
