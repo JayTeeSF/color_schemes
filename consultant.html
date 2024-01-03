@@ -11,25 +11,16 @@
   </head>
   <body>
     <!-- Main content -->
-    <header class="main-header bg-blue-600 text-white p-4">
-      <h1 id="header-title" class="text-3xl primary-text">John Doe - Consultant</h1>
+    <header class="main-header text-white p-4">
+      <h1 id="header-title" class="text-3xl">[Header Title Placeholder]</h1>
+      <div id="style-controls">
+        <button id="clear-preferences">Clear Preferences</button>
+        <!-- The dropdowns will be populated by JavaScript -->
+        <select id="font-selector"></select>
+        <select id="color-scheme-selector"></select>
+        <button id="mode-toggle">Toggle Dark/Light Mode</button>
+      </div>
     </header>
-
-    <!-- StyleManager UI -->
-    <div id="style-manager-ui" class="style-manager">
-      <button onclick="clearCookiesAndResetText()">Clear Preferences</button>
-      <!-- Color scheme and font dropdowns, mode toggle button -->
-      <!-- Add dropdown for color schemes here -->
-      <select id="color-scheme-selector">
-        <option value="Cerulean Lime Crimson">Cerulean Lime Crimson</option>
-        <option value="Royal Emerald Crimson">Royal Emerald Crimson</option>
-        <option value="Midnight Olive Silver">Midnight Olive Silver</option>
-        <option value="Twitter Teal Light Grey">Twitter Teal Light Grey</option>
-      </select>
-      <!-- Add dropdown for fonts here -->
-      <select id="font-selector"></select>
-      <button id="mode-toggle">Toggle Dark/Light Mode</button>
-    </div>
 
     <section class="p-4">
       <h2 class="text-2xl">About Me</h2>
@@ -62,11 +53,12 @@
       </div>
     </section>
 
-    <footer id="contact-info" class="text-white p-4 primary-bg">
-      Contact me for collaborations and consultancy opportunities.
+    <!-- Footer -->
+    <footer class="footer text-white p-4">
+      <p id="footer-text">[Footer Text Placeholder]</p>
     </footer>
 
-    <script type="module" src="styleManager.js"></script>
+    <script type="module" src="styleManager.js" type="module"></script>
     <script type="module" src="script.js"></script>
   </body>
 </html>
