@@ -1,106 +1,21 @@
 /* styleManager.css */
+/* This CSS file will only contain styles that the Style Manager is allowed to modify */
+
 :root {
-    /* Color scheme properties */
-    --primary-color: #007bff; /* Cerulean Blue */
-    --secondary-color: #A2C95C; /* Lime Green */
-    --accent-color: #F05134; /* Red Orange */
-
-    /* Light mode colors */
-    --light-primary-bg: #ffffff; /* White */
-    --light-secondary-bg: #f0f0f0; /* Light Gray */
-    --light-accent-bg: #007bff; /* Cerulean Blue */
-    --light-text-color: #000000; /* Black */
-
-    /* Dark mode colors */
-    --dark-primary-bg: #2f4f4f; /* Midnight Blue */
-    --dark-secondary-bg: #191d21; /* Dark Gray */
-    --dark-accent-bg: #666666; /* Dark Gray */
-    --dark-text-color: #ffffff; /* White */
-
-    /* Font families */
-    --font-primary: 'Arial', sans-serif;
-    --font-secondary: 'Georgia', serif;
-    --font-accent: 'Courier New', monospace;
-
-    /* Font sizes */
-    --font-size-primary: 16px;
-    --font-size-secondary: 14px;
-    --font-size-accent: 12px;
-
-    /* Other styling options */
-    --border-radius: 4px;
-    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    /* Pairing Verdana with a complementary serif font, such as Georgia */
-    --font-body: Georgia, serif;
-    --font-heading: Verdana, sans-serif;
+  /* Color scheme properties, these will be modified by the Style Manager */
+  --primary-color: #007bff; /* Default primary color */
+  --secondary-color: #A2C95C; /* Default secondary color */
+  --accent-color: #F05134; /* Default accent color */
+  --background-color: #ffffff; /* Default background color */
+  --text-color: #000000; /* Default text color */
 }
 
-/* Applying the font pairings */
-body, p, li {
-  font-family: var(--font-body);
-}
-
-h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: var(--font-heading);
-}
-
-/* Styles for the color scheme dropdown visual indicators */
-.color-indicator {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin: 0 5px;
-  vertical-align: middle;
-  border: 1px solid #000; /* In case the color is white or very light */
-}
-
-/* Styles for making the StyleManager UI hideable */
-#style-manager-ui {
-  display: none; /* Hidden by default */
-}
-
-/* Reveal the UI if the query string 'showUI=true' is present */
-body.show-style-manager-ui #style-manager-ui {
-  display: block;
-}
-
-body {
-    background-color: var(--light-primary-bg);
-    color: var(--light-text-color);
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for color and background */
-}
-
-/* Dark mode styles */
-body.dark-mode {
-    background-color: var(--dark-primary-bg);
-    color: var(--dark-text-color);
-}
-
-/* Color scheme application */
+/* Dynamic style classes that will be applied by the Style Manager */
 .primary-bg { background-color: var(--primary-color); }
 .secondary-bg { background-color: var(--secondary-color); }
 .accent-bg { background-color: var(--accent-color); }
+.primary-text { color: var(--primary-color); }
+.secondary-text { color: var(--secondary-color); }
+.accent-text { color: var(--accent-color); }
 
-/* Font application */
-.font-primary { font-family: var(--font-primary); }
-.font-secondary { font-family: var(--font-secondary); }
-.font-accent { font-family: var(--font-accent); }
-
-/* Font size application */
-.font-size-primary { font-size: var(--font-size-primary); }
-.font-size-secondary { font-size: var(--font-size-secondary); }
-.font-size-accent { font-size: var(--font-size-accent); }
-
-/* Utility classes for border radius and box shadow */
-.border-radius { border-radius: var(--border-radius); }
-.box-shadow { box-shadow: var(--box-shadow); }
-
-/* Style for color indicators in the dropdown */
-.color-indicator {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-left: 2px;
-    border: 1px solid #000; /* Ensure indicators are visible on all backgrounds */
-}
+/* Other dynamic styles can be added here */
