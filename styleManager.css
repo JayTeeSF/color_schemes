@@ -137,3 +137,12 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+
+/* Add this inside your styleManager.css */
+.color-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  border: 1px solid #000; /* Optional: adds a border around the color indicator */
+}

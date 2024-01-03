@@ -2,10 +2,11 @@
 class StyleManager {
   constructor() {
     this.colorSchemes = {
-      'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134'],
-      'Royal Emerald Crimson': ['#4169E1', '#2ECC71', '#E74C3C'],
-      'Midnight Olive Silver': ['#2F4F4F', '#66A350', '#CCCCCC'],
-      'Twitter Teal Light Grey': ['#3498DB', '#38A3A5', '#F1F1F1'],
+      // Additional color schemes can be added here
+      'Cerulean Lime Crimson': ['#007bff', '#A2C95C', '#F05134', '#ffffff', '#242424', '#ffffff', '#000000'],
+      'Royal Emerald Crimson': ['#4169E1', '#2ECC71', '#E74C3C', '#f0f0f0', '#333333', '#000000', '#ffffff'],
+      'Midnight Olive Silver': ['#2F4F4F', '#66A350', '#CCCCCC', '#272727', '#eaeaea', '#ffffff', '#000000'],
+      'Twitter Teal Light Grey': ['#3498DB', '#38A3A5', '#F1F1F1', '#dddddd', '#222222', '#ffffff', '#000000'],
       'Ocean Wave': ['#00577B', '#A6D6D6', '#C1E7E3'],
       'Sunset Boulevard': ['#FF5E5B', '#D8D8D8', '#FFFFEA'],
       'Forest Hike': ['#5D4157', '#A8CABA', '#E6EBE0'],
@@ -18,7 +19,7 @@ class StyleManager {
       'Palatino Linotype': '"Palatino Linotype", "Book Antiqua", Palatino, serif',
       'Times New Roman': '"Times New Roman", Times, serif'
     };
-    // this.currentMode = 'light'; // Default to light mode
+    this.currentMode = 'light';
   }
 
   applyFont(fontName) {
@@ -27,58 +28,51 @@ class StyleManager {
 
   applyColorScheme(schemeName) {
     const colors = this.colorSchemes[schemeName];
-    if (colors) {
-      document.documentElement.style.setProperty('--primary-color', colors[0]);
-      document.documentElement.style.setProperty('--secondary-color', colors[1]);
-      document.documentElement.style.setProperty('--accent-color', colors[2]);
-    }
+    document.documentElement.style.setProperty('--primary-color', colors[0]);
+    document.documentElement.style.setProperty('--secondary-color', colors[1]);
+    document.documentElement.style.setProperty('--accent-color', colors[2]);
+    document.documentElement.style.setProperty('--background-color', this.currentMode === 'light' ? colors[3] : colors[4]);
+    document.documentElement.style.setProperty('--text-color', this.currentMode === 'light' ? colors[5] : colors[6]);
   }
 
   toggleDarkLightMode() {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-    // Update the colors based on the new mode
-    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    this.applyColorScheme(mode === 'dark' ? 'Midnight Olive Silver' : 'Cerulean Lime Crimson');
+    this.currentMode = this.currentMode === 'light' ? 'dark' : 'light';
+    this.applyColorScheme(document.getElementById('color-scheme-selector').value);
   }
 
   createDropdownOptions(items, formatter) {
-    return Object.entries(items).map(([key, value]) => {
-      return formatter(key, value);
-    }).join('');
+    return Object.entries(items).map(([key, value]) => formatter(key, value)).join('');
   }
 
   createColorSchemeOptions() {
-    return Object.entries(this.colorSchemes).map(([name, colors]) => {
-      // Create color indicators with inline styling for size and display
-      const colorIndicators = colors.map(color => `<span style="background-color:${color}; width: 15px; height: 15px; display: inline-block; margin-left: 2px;"></span>`).join('');
-      // Apply background and text color to the option itself, assuming colors[3] is bg and colors[5] is text color
-      return `<option value="${name}" style="background-color:${colors[3]}; color:${colors[5]};">${name} <div style="display:inline-block; vertical-align:middle;">${colorIndicators}</div></option>`;
-    }).join('');
+    return this.createDropdownOptions(this.colorSchemes, (schemeName, colors) => {
+      const colorIndicators = colors.slice(0, 3).map(color => 
+        `<span class="color-indicator" style="background-color:${color};"></span>`
+      ).join('');
+      return `<option value="${schemeName}">${schemeName} ${colorIndicators}</option>`;
+    });
+  }
+
+  createFontOptions() {
+    return this.createDropdownOptions(this.fonts, (fontName) => 
+      `<option value="${fontName}">${fontName}</option>`
+    );
   }
 
   initUI() {
-        const fontSelector = document.getElementById('font-selector');
+    const fontSelector = document.getElementById('font-selector');
     const colorSchemeSelector = document.getElementById('color-scheme-selector');
     const modeToggle = document.getElementById('mode-toggle');
 
-    if (fontSelector) {
-      fontSelector.innerHTML = this.createDropdownOptions(this.fonts, (fontName, _) => {
-        return `<option value="${fontName}">${fontName}</option>`;
-      });
+    if (fontSelector && colorSchemeSelector && modeToggle) {
+      fontSelector.innerHTML = this.createFontOptions();
+      colorSchemeSelector.innerHTML = this.createColorSchemeOptions();
+
       fontSelector.addEventListener('change', (e) => this.applyFont(e.target.value));
-    }
-
-    if (colorSchemeSelector) {
-      colorSchemeSelector.innerHTML = this.createDropdownOptions(this.colorSchemes, (schemeName, colors) => {
-        const colorIndicators = colors.map(color => `<span style="background-color:${color}; width: 1em; height: 1em; display: inline-block;"></span>`).join(' ');
-        return `<option value="${schemeName}">${schemeName} ${colorIndicators}</option>`;
-      });
       colorSchemeSelector.addEventListener('change', (e) => this.applyColorScheme(e.target.value));
-    }
-
-    if (modeToggle) {
       modeToggle.addEventListener('click', () => this.toggleDarkLightMode());
+    } else {
+      console.error('UI elements not found');
     }
   }
 }
@@ -86,8 +80,8 @@ class StyleManager {
 document.addEventListener('DOMContentLoaded', () => {
   const styleManager = new StyleManager();
   styleManager.initUI();
-  // styleManager.applyFont('Arial');
-  // styleManager.applyColorScheme('Ocean Wave');
+  styleManager.applyFont('Arial');
+  styleManager.applyColorScheme('Cerulean Lime Crimson');
 });
 
 export default new StyleManager();
