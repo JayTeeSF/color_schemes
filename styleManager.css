@@ -1,25 +1,25 @@
 /* styleManager.css */
 :root {
-    /* Default color scheme */
+    /* Color scheme properties */
     --primary-color: #007bff; /* Cerulean Blue */
     --secondary-color: #A2C95C; /* Lime Green */
     --accent-color: #F05134; /* Red Orange */
-    --background-color: #ffffff; /* Default background color */
-    --text-color: #000000; /* Default text color */
 
     /* Light mode colors */
-    --light-primary-bg: #FFFFFF; /* White */
-    --light-secondary-bg: #F0F0F0; /* Very light gray */
+    --light-primary-bg: #ffffff; /* White */
+    --light-secondary-bg: #f0f0f0; /* Light Gray */
     --light-accent-bg: #007bff; /* Cerulean Blue */
+    --light-text-color: #000000; /* Black */
 
     /* Dark mode colors */
-    --dark-primary-bg: #2F4F4F; /* Midnight Blue */
-    --dark-secondary-bg: #66A350; /* Dark Olive Green */
-    --dark-accent-bg: #CCCCCC; /* Silver */
+    --dark-primary-bg: #2f4f4f; /* Midnight Blue */
+    --dark-secondary-bg: #191d21; /* Dark Gray */
+    --dark-accent-bg: #666666; /* Dark Gray */
+    --dark-text-color: #ffffff; /* White */
 
     /* Font families */
-    --font-primary: Arial, sans-serif;
-    --font-secondary: 'Times New Roman', serif;
+    --font-primary: 'Arial', sans-serif;
+    --font-secondary: 'Georgia', serif;
     --font-accent: 'Courier New', monospace;
 
     /* Font sizes */
@@ -32,117 +32,52 @@
     --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Light/Dark mode backgrounds */
+body {
+    font-family: var(--font-primary);
+    background-color: var(--light-primary-bg);
+    color: var(--light-text-color);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for color and background */
+}
+
+/* Dark mode styles */
 body.dark-mode {
-  background-color: var(--dark-background-color);
-  color: var(--dark-text-color);
+    background-color: var(--dark-primary-bg);
+    color: var(--dark-text-color);
 }
 
-body:not(.dark-mode) {
-  background-color: var(--light-background-color);
-  color: var(--light-text-color);
+/* Color scheme application */
+.primary-bg { background-color: var(--primary-color); }
+.secondary-bg { background-color: var(--secondary-color); }
+.accent-bg { background-color: var(--accent-color); }
+
+/* Font application */
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+.font-accent { font-family: var(--font-accent); }
+
+/* Font size application */
+.font-size-primary { font-size: var(--font-size-primary); }
+.font-size-secondary { font-size: var(--font-size-secondary); }
+.font-size-accent { font-size: var(--font-size-accent); }
+
+/* Utility classes for border radius and box shadow */
+.border-radius { border-radius: var(--border-radius); }
+.box-shadow { box-shadow: var(--box-shadow); }
+
+/* Style for color indicators in the dropdown */
+.color-indicator {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 2px;
+    border: 1px solid #000; /* Ensure indicators are visible on all backgrounds */
 }
 
-/* Typography rules for long-form text and headers */
-p {
-  font-family: var(--font-secondary), sans-serif; /* Typically serif fonts are used for long-form text */
+/* Specific typography rules */
+p, li {
+    font-family: var(--font-secondary); /* Serif font for long-form text */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-primary), sans-serif; /* Sans-serif fonts are often used for headers */
-}
-
-/* Styles for dropdown options with color indicators */
-.option-color-indicator {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin-left: 2px;
-}
-
-/* Elements that will use the primary color scheme */
-.primary-color {
-    color: var(--primary-color);
-}
-
-.secondary-color {
-    color: var(--secondary-color);
-}
-
-.accent-color {
-    color: var(--accent-color);
-}
-
-/* Background color classes for light and dark mode */
-.light-primary-bg {
-    background-color: var(--light-primary-bg);
-}
-
-.light-secondary-bg {
-    background-color: var(--light-secondary-bg);
-}
-
-.light-accent-bg {
-    background-color: var(--light-accent-bg);
-}
-
-.dark-primary-bg {
-    background-color: var(--dark-primary-bg);
-}
-
-.dark-secondary-bg {
-    background-color: var(--dark-secondary-bg);
-}
-
-.dark-accent-bg {
-    background-color: var(--dark-accent-bg);
-}
-
-/* Font family classes */
-.font-primary {
-    font-family: var(--font-primary);
-}
-
-.font-secondary {
-    font-family: var(--font-secondary);
-}
-
-.font-accent {
-    font-family: var(--font-accent);
-}
-
-/* Font size classes */
-.font-size-primary {
-    font-size: var(--font-size-primary);
-}
-
-.font-size-secondary {
-    font-size: var(--font-size-secondary);
-}
-
-.font-size-accent {
-    font-size: var(--font-size-accent);
-}
-
-/* Utility classes for border radius and box shadow */
-.border-radius {
-    border-radius: var(--border-radius);
-}
-
-.box-shadow {
-    box-shadow: var(--box-shadow);
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Add this inside your styleManager.css */
-.color-indicator {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin: 0 5px;
-  border: 1px solid #000; /* Optional: adds a border around the color indicator */
+    font-family: var(--font-primary); /* Sans-serif font for headings */
 }
