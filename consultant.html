@@ -6,11 +6,19 @@
     <title>Consultant Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleManager.css">
   </head>
   <body>
-    <header class="bg-blue-600 text-white p-4">
-      <h1 class="text-3xl">John Doe - Consultant</h1>
+    <!-- Main content -->
+    <header class="main-header bg-blue-600 text-white p-4">
+      <h1 id="header-title" class="text-3xl">John Doe - Consultant</h1>
+    </header>
+
+    <!-- StyleManager UI -->
+    <div id="style-manager-ui" class="style-manager">
+      <button onclick="clearCookiesAndResetText()">Clear Preferences</button>
+      <!-- Color scheme and font dropdowns, mode toggle button -->
       <!-- Add dropdown for color schemes here -->
       <select id="color-scheme-selector">
         <option value="Cerulean Lime Crimson">Cerulean Lime Crimson</option>
@@ -18,21 +26,19 @@
         <option value="Midnight Olive Silver">Midnight Olive Silver</option>
         <option value="Twitter Teal Light Grey">Twitter Teal Light Grey</option>
       </select>
-      <!-- Place this in the appropriate part of your HTML where you want the controls to appear -->
       <!-- Add dropdown for fonts here -->
       <select id="font-selector"></select>
-      <select id="color-scheme-selector"></select>
       <button id="mode-toggle">Toggle Dark/Light Mode</button>
-    </header>
-    <!-- The rest of your HTML content -->
-    -  <section class="p-4">
+    </div>
+
+    <section class="p-4">
       <h2 class="text-2xl">About Me</h2>
-      <p class="secondary-color">I am a consultant with expertise in...</p>
+      <p id="about-me" class="secondary-color">I am a consultant with expertise in...</p>
     </section>
 
     <section class="p-4">
       <h2 class="text-2xl">Accomplishments</h2>
-      <ul class="accent-color">
+      <ul id="accomplishments" class="accent-color">
         <li>Leading a successful project...</li>
         <!-- More accomplishments -->
       </ul>
@@ -40,7 +46,7 @@
 
     <section class="p-4">
       <h2 class="text-2xl">Upcoming Events</h2>
-      <ul class="secondary-color">
+      <ul id="upcoming-events" class="secondary-color">
         <li>Keynote speech at...</li>
         <!-- More events -->
       </ul>
@@ -56,8 +62,8 @@
       </div>
     </section>
 
-    <footer class="text-white p-4 primary-bg">
-      <p>Contact me for collaborations and consultancy opportunities.</p>
+    <footer id="contact-info" class="text-white p-4 primary-bg">
+      Contact me for collaborations and consultancy opportunities.
     </footer>
 
     <script type="module" src="styleManager.js"></script>

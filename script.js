@@ -1,4 +1,5 @@
 // script.js
+
 document.addEventListener('DOMContentLoaded', () => {
   // Define elements for text content that may be editable by the user
   const profileTextElements = {

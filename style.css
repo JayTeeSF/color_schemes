@@ -1,0 +1,16 @@
+/* style.css */
+.main-header {
+  background-color: #007bff; /* Default blue background for the header */
+  /* Add more permanent styling for the header here */
+}
+
+.style-manager {
+  display: none; /* Hidden by default */
+}
+
+/* Show the StyleManager UI when the body has a specific class */
+body.show-style-manager .style-manager {
+  display: block;
+}
+
+/* Add more permanent styles for the page here */

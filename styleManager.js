@@ -36,12 +36,13 @@ class StyleManager {
     document.documentElement.style.setProperty('--text-color', colors[5]);
   }
 
+  // Inside StyleManager class
+
   toggleDarkLightMode() {
     const body = document.body;
-    body.classList.toggle('dark-mode');
-    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    this.currentMode = mode;
-    this.applyColorScheme(document.getElementById('color-scheme-selector').value);
+    const isDarkMode = body.classList.toggle('dark-mode');
+    const scheme = isDarkMode ? 'dark' : 'light';
+    this.applyColorScheme(this.currentScheme); // assuming this.currentScheme holds the current color scheme name
   }
 
   createDropdownOptions(items, formatter) {
