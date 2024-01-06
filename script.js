@@ -67,30 +67,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // ...
 });
 
+// Toggle mode function
 function toggleMode() {
   const body = document.body;
   const currentMode = body.getAttribute('data-mode');
-  if (currentMode === 'dark') {
-    body.setAttribute('data-mode', 'light');
-  } else {
-    body.setAttribute('data-mode', 'dark');
-  }
+  const newMode = currentMode === 'dark' ? 'light' : 'dark';
+  body.setAttribute('data-mode', newMode);
+  localStorage.setItem('mode', newMode); // Save the new mode
 }
+
+// Initialize the mode based on local storage or system preference
+document.addEventListener('DOMContentLoaded', () => {
+  // Apply the saved mode if it exists, otherwise don't interfere
+  const savedMode = localStorage.getItem('mode');
+  if (savedMode) {
+    document.body.setAttribute('data-mode', savedMode);
+  }
+});
 
 // Expose the toggleMode function globally
 window.toggleMode = toggleMode;
-
-// Initialize the mode
-document.addEventListener('DOMContentLoaded', () => {
-  // Check for saved mode in localStorage or default to light
-  const savedMode = localStorage.getItem('mode') || 'light';
-  document.body.setAttribute('data-mode', savedMode);
-});
-
-// Save mode to localStorage when it changes
-document.body.addEventListener('change', () => {
-  localStorage.setItem('mode', document.body.getAttribute('data-mode'));
-});
 
 // Export functions if needed
 export { clearCookiesAndResetText };
