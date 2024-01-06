@@ -9,6 +9,14 @@ body {
   transition: background-color 0.3s, color 0.3s; /* Smooth transitions for mode change */
 }
 
+/* Toggle mode icon style */
+.toggle-mode-icon {
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  display: inline-block; /* For proper alignment */
+  font-size: 1.5rem; /* Icon size */
+  color: #ffffff; /* Icon color */
+}
+
 /* Header styles */
 .main-header {
   background-color: #003366; /* Dark blue background for the header */
