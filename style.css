@@ -1,36 +1,36 @@
 /* style.css */
-/* Global styles */
-body[data-mode='light'] {
-  font-family: 'Verdana', sans-serif; /* Sans-serif font for body text */
-  background-color: #fff; /* Light background for the body */
-  color: #333; /* Dark text for better readability */
-  margin: 0;
-  padding: 0;
+/* Default to system preference */
+body {
+  background-color: #fff; /* Default light background */
+  color: #333; /* Default dark text */
 }
 
-body[data-mode='dark'] {
-  font-family: 'Verdana', sans-serif; /* Sans-serif font for body text */
-  background-color: #121212; /* Dark background for the body */
-  color: #ddd; /* Light text for better readability */
+/* Dark Mode - Activates when user has a system-wide dark mode preference */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #282828; /* Dark grey background for the body */
+    color: #ddd; /* Light grey text for content */
+  }
+
+  .main-header, .footer {
+    background-color: #003366; /* Dark blue background remains the same */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* White text for headings in dark mode */
+  }
+  
+  /* You might want to adjust the link colors for dark mode if necessary */
+  a {
+    color: #4d9fea; /* Light blue link color for dark mode */
+  }
 }
 
 /* Header styles */
 .main-header {
-  /* Use header.png as a background */
-  background-image: url('header.png');
-  background-size: cover; /* Cover the entire width of the header */
-  background-position: center; /* Center the background image */
+  background-color: #003366; /* Dark blue background for the header */
   color: #ffffff; /* White text for legibility */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better legibility */
-  padding: 2rem 1rem; /* Sufficient padding to avoid cutting off text */
-  text-align: center; /* Centered header text */
-}
-
-/* Header styles */
-.old-main-header {
-  background-color: #005b96; /* Professional blue background for the header */
-  color: #ffffff; /* White text for legibility */
-  padding: 2rem 1rem; /* Increased top padding to prevent text cutoff */
+  padding: 2rem 1rem; /* Sufficient padding */
   text-align: center; /* Centered header text */
 }
 
@@ -41,7 +41,7 @@ body[data-mode='dark'] {
 
 /* Footer styles */
 .footer {
-  background-color: #005b96; /* Footer background to match the header */
+  background-color: #003366; /* Dark blue background for the footer */
   color: #ffffff; /* White text for the footer */
   padding: 1rem;
   text-align: center;
@@ -52,19 +52,20 @@ body[data-mode='dark'] {
   width: 150px; /* Width of the profile image */
   height: 150px; /* Height of the profile image */
   border-radius: 50%; /* Circular image */
-  display: block; /* Allows for margin auto to work */
-  margin: 1rem auto; /* Centers the image and adds spacing */
+  display: block; /* Block display for centering */
+  margin: 1rem auto; /* Auto margin for horizontal centering */
 }
 
 /* Heading styles */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Georgia', serif; /* Serif font for headings */
   margin-top: 0; /* Removes default top margin from headings */
+  color: #ffffff; /* Ensures headings are white for legibility */
 }
 
 /* Link styles */
 a {
-  color: #005b96; /* Standard link color */
+  color: inherit; /* Inherits the color from the parent element */
   text-decoration: none; /* No underline on links */
 }
 
@@ -85,8 +86,14 @@ button, input, select, textarea {
 .hidden {
   display: none; /* Hides elements with this class */
 }
+/* Styles that depend on the data-mode attribute, for overriding the system preference */
+body[data-mode='light'] {
+  background-color: #fff; /* Light background */
+  color: #333; /* Dark text */
+}
 
-/* Favicon link - Ensure this matches the location and name of your favicon file */
-/* Place this inside the <head> of your HTML */
-<link rel="icon" type="image/png" href="favicon.png"/>
+body[data-mode='dark'] {
+  background-color: #282828; /* Dark background */
+  color: #ddd; /* Light text */
+}
 
