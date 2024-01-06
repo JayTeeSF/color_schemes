@@ -4,6 +4,8 @@ body[data-mode='light'] {
   font-family: 'Verdana', sans-serif; /* Sans-serif font for body text */
   background-color: #fff; /* Light background for the body */
   color: #333; /* Dark text for better readability */
+  margin: 0;
+  padding: 0;
 }
 
 body[data-mode='dark'] {
@@ -16,7 +18,7 @@ body[data-mode='dark'] {
 .main-header {
   background-color: #005b96; /* Professional blue background for the header */
   color: #ffffff; /* White text for legibility */
-  padding: 1rem; /* Uniform padding */
+  padding: 2rem 1rem; /* Increased top padding to prevent text cutoff */
   text-align: center; /* Centered header text */
 }
 
@@ -71,3 +73,8 @@ button, input, select, textarea {
 .hidden {
   display: none; /* Hides elements with this class */
 }
+
+/* Favicon link - Ensure this matches the location and name of your favicon file */
+/* Place this inside the <head> of your HTML */
+<link rel="icon" type="image/png" href="favicon.png"/>
+
