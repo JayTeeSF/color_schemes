@@ -1,29 +1,12 @@
 /* style.css */
-/* Default to system preference */
+/* Global styles */
 body {
-  background-color: #fff; /* Default light background */
-  color: #333; /* Default dark text */
-}
-
-/* Dark Mode - Activates when user has a system-wide dark mode preference */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #282828; /* Dark grey background for the body */
-    color: #ddd; /* Light grey text for content */
-  }
-
-  .main-header, .footer {
-    background-color: #003366; /* Dark blue background remains the same */
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* White text for headings in dark mode */
-  }
-  
-  /* You might want to adjust the link colors for dark mode if necessary */
-  a {
-    color: #4d9fea; /* Light blue link color for dark mode */
-  }
+  font-family: 'Arial', sans-serif; /* Sans-serif font for body text */
+  background-color: #fff; /* White background for light mode */
+  color: #333; /* Dark text for better readability */
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions for mode change */
 }
 
 /* Header styles */
@@ -86,14 +69,40 @@ button, input, select, textarea {
 .hidden {
   display: none; /* Hides elements with this class */
 }
-/* Styles that depend on the data-mode attribute, for overriding the system preference */
-body[data-mode='light'] {
-  background-color: #fff; /* Light background */
-  color: #333; /* Dark text */
+
+/* Toggle mode button style */
+.toggle-mode-button {
+  background-color: #ffffff; /* White background for the button */
+  color: #003366; /* Dark blue text for the button */
+  border: 1px solid #003366; /* Dark blue border for the button */
+  padding: 0.5rem 1rem; /* Padding inside the button */
+  margin-bottom: 1rem; /* Margin below the button */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  border-radius: 0.3rem; /* Rounded corners for the button */
 }
 
-body[data-mode='dark'] {
-  background-color: #282828; /* Dark background */
-  color: #ddd; /* Light text */
+.toggle-mode-button:hover {
+  background-color: #003366; /* Dark blue background for the button on hover */
+  color: #ffffff; /* White text for the button on hover */
 }
 
+/* Dark Mode - Activates when user has a system-wide dark mode preference */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #282828; /* Dark grey background for the body */
+    color: #ddd; /* Light grey text for content */
+  }
+
+  .main-header, .footer {
+    background-color: #003366; /* Dark blue background remains the same */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* White text for headings in dark mode */
+  }
+  
+  /* You might want to adjust the link colors for dark mode if necessary */
+  a {
+    color: #4d9fea; /* Light blue link color for dark mode */
+  }
+}
