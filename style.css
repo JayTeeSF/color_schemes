@@ -1,75 +1,73 @@
 /* style.css */
-/* This CSS file will contain permanent styles for the website */
-
-/* Ensure high contrast for header text for legibility */
-.main-header {
-  background-color: #007bff; /* Assuming this is your header background */
-  color: #ffffff; /* This ensures the text is legible on the blue background */
-  /* Add other styles to ensure padding and margin are appropriate */
-  padding: 1rem 0; /* Example padding */
-}
-
-/* Ensure body background is consistent and professional */
-body {
-  background-color: #f0f0f0; /* Light background for the body */
+/* Global styles */
+body[data-mode='light'] {
+  font-family: 'Verdana', sans-serif; /* Sans-serif font for body text */
+  background-color: #fff; /* Light background for the body */
   color: #333; /* Dark text for better readability */
-  font-family: 'Verdana', sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-/* Update footer for consistency and professionalism */
+body[data-mode='dark'] {
+  font-family: 'Verdana', sans-serif; /* Sans-serif font for body text */
+  background-color: #121212; /* Dark background for the body */
+  color: #ddd; /* Light text for better readability */
+}
+
+/* Header styles */
+.main-header {
+  background-color: #005b96; /* Professional blue background for the header */
+  color: #ffffff; /* White text for legibility */
+  padding: 1rem; /* Uniform padding */
+  text-align: center; /* Centered header text */
+}
+
+/* Main content styles */
+.main-content {
+  padding: 1rem; /* Padding for the main content */
+}
+
+/* Footer styles */
 .footer {
-  background-color: #007bff; /* Footer background should match header for consistency */
-  color: #ffffff; /* Footer text color for legibility */
+  background-color: #005b96; /* Footer background to match the header */
+  color: #ffffff; /* White text for the footer */
   padding: 1rem;
   text-align: center;
 }
 
-/* Styles for visibility of Style Manager UI */
-.style-manager-hidden {
-  display: none;
-}
-
-/* Styles for the main content */
-.main-content {
-  /* Styles for the main content of the website */
-}
-
-/* Other permanent styles for the site */
-
-/* Light Mode */
-body {
-  font-family: 'Verdana', sans-serif;
-  background-color: #f0f0f0; /* Light background */
-  color: #333; /* Dark text */
-}
-
-.header, .footer {
-  background-color: #007bff;
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212; /* Dark background */
-    color: #f0f0f0; /* Light text */
-  }
-
-  .header, .footer {
-    background-color: #0056b3;
-  }
-}
-
-/* Fonts */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Times New Roman', serif; /* Serif font for headings */
-}
-
-/* Profile Image Styles */
+/* Image styles */
 .profile-img {
-  width: 150px; /* Adjust as needed */
-  height: auto;
+  width: 150px; /* Width of the profile image */
+  height: 150px; /* Height of the profile image */
   border-radius: 50%; /* Circular image */
-  margin: 10px 0;
+  display: block; /* Allows for margin auto to work */
+  margin: 1rem auto; /* Centers the image and adds spacing */
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', serif; /* Serif font for headings */
+  margin-top: 0; /* Removes default top margin from headings */
+}
+
+/* Link styles */
+a {
+  color: #005b96; /* Standard link color */
+  text-decoration: none; /* No underline on links */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Button and input styles */
+button, input, select, textarea {
+  font-family: inherit; /* Ensures inputs match the font of the body */
+  padding: 0.5rem; /* Standard padding for form elements */
+  margin: 0.5rem 0; /* Standard margin for form elements */
+  border: 1px solid #ccc; /* Standard border for form elements */
+  border-radius: 0.3rem; /* Slightly rounded corners for form elements */
+}
+
+/* Utility classes */
+.hidden {
+  display: none; /* Hides elements with this class */
 }
