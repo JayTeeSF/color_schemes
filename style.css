@@ -1,9 +1,11 @@
 /* style.css */
-/* Default to system preference */
+/* Global styles */
 body {
-  background-color: #fff; /* Default light background */
-  color: #333; /* Default dark text */
   font-family: 'Arial', sans-serif; /* Sans-serif font for body text */
+  background-color: #fff; /* White background for light mode */
+  color: #333; /* Dark text for better readability */
+  margin: 0;
+  padding: 0;
   transition: background-color 0.3s, color 0.3s; /* Smooth transitions for mode change */
 }
 
@@ -104,10 +106,11 @@ button, input, select, textarea {
   display: inline-block; /* For proper alignment */
   font-size: 1.5rem; /* Icon size */
   color: #ffffff; /* Icon color */
+  margin: 0 10px; /* Margin for spacing */
 }
 
 /* Smaller text in sections should be dark in light mode and light in dark mode */
-.secondary-color, .accent-color, #about-me, #accomplishments, #upcoming-events {
+.secondary-color, .accent-color, #about-me, #accomplishments, #upcoming-events, #contact-info {
   color: #333; /* Dark text for light mode */
 }
 
@@ -115,6 +118,7 @@ body[data-mode='dark'] .secondary-color,
 body[data-mode='dark'] .accent-color, 
 body[data-mode='dark'] #about-me, 
 body[data-mode='dark'] #accomplishments, 
-body[data-mode='dark'] #upcoming-events {
+body[data-mode='dark'] #upcoming-events,
+body[data-mode='dark'] #contact-info {
   color: #ddd; /* Light text for dark mode */
 }
