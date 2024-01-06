@@ -9,21 +9,9 @@ body {
   transition: background-color 0.3s, color 0.3s; /* Smooth transitions for mode change */
 }
 
-/* Styles that depend on the data-mode attribute, for overriding the system preference */
-body[data-mode='light'] {
-  background-color: #fff; /* Light background */
-  color: #333; /* Dark text */
-}
-
-body[data-mode='dark'] {
-  background-color: #282828; /* Dark background */
-  color: #ddd; /* Light text */
-}
-
 /* Header styles */
 .main-header {
   background-color: #003366; /* Dark blue background for the header */
-  color: #ffffff; /* White text for legibility */
   padding: 2rem 1rem; /* Sufficient padding */
   text-align: center; /* Centered header text */
 }
@@ -36,7 +24,6 @@ body[data-mode='dark'] {
 /* Footer styles */
 .footer {
   background-color: #003366; /* Dark blue background for the footer */
-  color: #ffffff; /* White text for the footer */
   padding: 1rem;
   text-align: center;
 }
@@ -54,26 +41,6 @@ body[data-mode='dark'] {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Georgia', serif; /* Serif font for headings */
   margin-top: 0; /* Removes default top margin from headings */
-}
-
-/* Dark Mode - Activates when user has a system-wide dark mode preference */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #282828; /* Dark grey background for the body */
-    color: #ddd; /* Light grey text for content */
-  }
-
-  .main-header, .footer {
-    background-color: #003366; /* Dark blue background remains the same */
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* White text for headings in dark mode */
-  }
-  
-  a {
-    color: #4d9fea; /* Light blue link color for dark mode */
-  }
 }
 
 /* Link styles */
@@ -104,21 +71,34 @@ button, input, select, textarea {
 .toggle-mode-icon {
   cursor: pointer; /* Cursor changes to pointer on hover */
   display: inline-block; /* For proper alignment */
-  font-size: 1.5rem; /* Icon size */
-  color: #ffffff; /* Icon color */
-  margin: 0 10px; /* Margin for spacing */
+  font-size: 1.0rem; /* Icon size */
 }
 
-/* Smaller text in sections should be dark in light mode and light in dark mode */
-.secondary-color, .accent-color, #about-me, #accomplishments, #upcoming-events, #contact-info {
-  color: #333; /* Dark text for light mode */
+/* Styles that depend on the data-mode attribute, for overriding the system preference */
+body[data-mode='light'] {
+  background-color: #fff; /* Light background */
+  color: #333; /* Dark text */
+  
+  /* Light mode specific styles for text */
+  .main-header, .footer, h1, h2, h3, h4, h5, h6 {
+    color: #333; /* Dark text for better readability */
+  }
+  
+  .toggle-mode-icon {
+    color: #333; /* Dark icon color for contrast */
+  }
 }
 
-body[data-mode='dark'] .secondary-color, 
-body[data-mode='dark'] .accent-color, 
-body[data-mode='dark'] #about-me, 
-body[data-mode='dark'] #accomplishments, 
-body[data-mode='dark'] #upcoming-events,
-body[data-mode='dark'] #contact-info {
-  color: #ddd; /* Light text for dark mode */
+body[data-mode='dark'] {
+  background-color: #282828; /* Dark background */
+  color: #ddd; /* Light text */
+  
+  /* Dark mode specific styles for text */
+  .main-header, .footer, h1, h2, h3, h4, h5, h6 {
+    color: #fff; /* White text for better readability */
+  }
+  
+  .toggle-mode-icon {
+    color: #fff; /* White icon color for contrast */
+  }
 }
