@@ -1,16 +1,29 @@
 /* style.css */
 /* This CSS file will contain permanent styles for the website */
 
+/* Ensure high contrast for header text for legibility */
 .main-header {
-  background-color: #007bff; /* Blue background for the header, won't be changed by Style Manager */
-  /* Additional fixed styles for the header */
+  background-color: #007bff; /* Assuming this is your header background */
+  color: #ffffff; /* This ensures the text is legible on the blue background */
+  /* Add other styles to ensure padding and margin are appropriate */
+  padding: 1rem 0; /* Example padding */
 }
 
-/* Fixed styles for the body, won't be changed by Style Manager */
+/* Ensure body background is consistent and professional */
 body {
-  font-family: 'Verdana', sans-serif; /* Verdana will be the default font for the whole page */
+  background-color: #f0f0f0; /* Light background for the body */
+  color: #333; /* Dark text for better readability */
+  font-family: 'Verdana', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Update footer for consistency and professionalism */
+.footer {
+  background-color: #007bff; /* Footer background should match header for consistency */
+  color: #ffffff; /* Footer text color for legibility */
+  padding: 1rem;
+  text-align: center;
 }
 
 /* Styles for visibility of Style Manager UI */
@@ -23,12 +36,40 @@ body {
   /* Styles for the main content of the website */
 }
 
-/* Fixed styles for footer */
-.footer {
-  background-color: #007bff; /* Footer background */
-  color: #ffffff; /* Footer text color */
-  padding: 1rem;
-  text-align: center;
+/* Other permanent styles for the site */
+
+/* Light Mode */
+body {
+  font-family: 'Verdana', sans-serif;
+  background-color: #f0f0f0; /* Light background */
+  color: #333; /* Dark text */
 }
 
-/* Other permanent styles for the site */
+.header, .footer {
+  background-color: #007bff;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212; /* Dark background */
+    color: #f0f0f0; /* Light text */
+  }
+
+  .header, .footer {
+    background-color: #0056b3;
+  }
+}
+
+/* Fonts */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Times New Roman', serif; /* Serif font for headings */
+}
+
+/* Profile Image Styles */
+.profile-img {
+  width: 150px; /* Adjust as needed */
+  height: auto;
+  border-radius: 50%; /* Circular image */
+  margin: 10px 0;
+}
