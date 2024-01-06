@@ -16,6 +16,18 @@ body[data-mode='dark'] {
 
 /* Header styles */
 .main-header {
+  /* Use header.png as a background */
+  background-image: url('header.png');
+  background-size: cover; /* Cover the entire width of the header */
+  background-position: center; /* Center the background image */
+  color: #ffffff; /* White text for legibility */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better legibility */
+  padding: 2rem 1rem; /* Sufficient padding to avoid cutting off text */
+  text-align: center; /* Centered header text */
+}
+
+/* Header styles */
+.old-main-header {
   background-color: #005b96; /* Professional blue background for the header */
   color: #ffffff; /* White text for legibility */
   padding: 2rem 1rem; /* Increased top padding to prevent text cutoff */
