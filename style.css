@@ -1,104 +1,103 @@
-/* style.css */
 /* Global styles */
 body {
-  font-family: 'Arial', sans-serif; /* Sans-serif font for body text */
-  background-color: #fff; /* White background for light mode */
-  color: #333; /* Dark text for better readability */
+  font-family: 'Arial', sans-serif;
+  background-color: #ecf0f1; /* Light grayish color from the palette */
+  color: #34495e; /* Dark blue color for text */
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transitions for mode change */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Header styles */
 .main-header {
-  background-color: #003366; /* Dark blue background for the header */
-  padding: 2rem 1rem; /* Sufficient padding */
-  text-align: center; /* Centered header text */
+  background-color: #3498db; /* Bright blue */
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 /* Main content styles */
 .main-content {
-  padding: 1rem; /* Padding for the main content */
+  padding: 1rem;
 }
 
 /* Footer styles */
 .footer {
-  background-color: #003366; /* Dark blue background for the footer */
+  background-color: #3498db; /* Bright blue */
   padding: 1rem;
   text-align: center;
 }
 
 /* Image styles */
 .profile-img {
-  width: 150px; /* Width of the profile image */
-  height: 150px; /* Height of the profile image */
-  border-radius: 50%; /* Circular image */
-  display: block; /* Block display for centering */
-  margin: 1rem auto; /* Auto margin for horizontal centering */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: 1rem auto;
 }
 
 /* Heading styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Georgia', serif; /* Serif font for headings */
-  margin-top: 0; /* Removes default top margin from headings */
+  font-family: 'Georgia', serif;
+  margin-top: 0;
+  color: #2c3e50; /* Darker shade of blue */
 }
 
 /* Link styles */
 a {
-  color: inherit; /* Inherits the color from the parent element */
-  text-decoration: none; /* No underline on links */
+  color: #e74c3c; /* Red color for links */
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline; /* Underline on hover for links */
+  text-decoration: underline;
 }
 
 /* Button and input styles */
 button, input, select, textarea {
-  font-family: inherit; /* Ensures inputs match the font of the body */
-  padding: 0.5rem; /* Standard padding for form elements */
-  margin: 0.5rem 0; /* Standard margin for form elements */
-  border: 1px solid #ccc; /* Standard border for form elements */
-  border-radius: 0.3rem; /* Slightly rounded corners for form elements */
+  font-family: inherit;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
 }
 
 /* Utility classes */
 .hidden {
-  display: none; /* Hides elements with this class */
+  display: none;
 }
 
 /* Toggle mode icon style */
 .toggle-mode-icon {
-  cursor: pointer; /* Cursor changes to pointer on hover */
-  display: inline-block; /* For proper alignment */
-  font-size: 1.0rem; /* Icon size */
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.0rem;
 }
 
-/* Styles that depend on the data-mode attribute, for overriding the system preference */
+/* Styles for light mode */
 body[data-mode='light'] {
-  background-color: #fff; /* Light background */
-  color: #333; /* Dark text */
+  background-color: #ecf0f1;
+  color: #34495e;
   
-  /* Light mode specific styles for text */
   .main-header, .footer, h1, h2, h3, h4, h5, h6 {
-    color: #333; /* Dark text for better readability */
+    color: #2c3e50;
   }
   
   .toggle-mode-icon {
-    color: #333; /* Dark icon color for contrast */
+    color: #34495e;
   }
 }
 
+/* Styles for dark mode */
 body[data-mode='dark'] {
-  background-color: #282828; /* Dark background */
-  color: #ddd; /* Light text */
+  background-color: #2c3e50; /* Dark blue */
+  color: #ecf0f1; /* Light grayish color for text */
   
-  /* Dark mode specific styles for text */
   .main-header, .footer, h1, h2, h3, h4, h5, h6 {
-    color: #fff; /* White text for better readability */
+    color: #ecf0f1; /* Light grayish color for text */
   }
   
   .toggle-mode-icon {
-    color: #fff; /* White icon color for contrast */
+    color: #ecf0f1;
   }
 }
